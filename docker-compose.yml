@@ -5,7 +5,7 @@ services:
   db:
     image: library/postgres:latest
     env_file:
-      - .env.db
+      - .env
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
