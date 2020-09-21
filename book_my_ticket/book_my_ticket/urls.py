@@ -39,6 +39,6 @@ path(
         name="swagger-ui",
     ),
     path('auth/', include('auth_app.urls')),
-    path('/api/v1/', include('cinema.urls')),
+    path('api/v1/', include('cinema.urls')),
     path('api/v1/', include('booking.urls'))
 ]
