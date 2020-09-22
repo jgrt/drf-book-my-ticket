@@ -1,0 +1,12 @@
+[run]
+source = .
+omit = /**/migrations/
+
+[report]
+fail_under = 100
+omit = /**/migrations/
+show_missing = 1
+skip_covered = 1
+skip_empty = 1
+sort = Cover
+
