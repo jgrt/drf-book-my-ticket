@@ -157,7 +157,9 @@ class MoviesByCity(generics.GenericAPIView):
             screen__cinema__city=city, start_timestamp__range=(start, end)
         ).values_list("movie", flat=True)
         movies = Movies.objects.filter(id__in=movies_id)
-        return Response(MovieSerializer(list(movies), many=True).data)
+        return Response(
+            MovieSerializer(list(movies), many=True).data, status=status.HTTP_200_OK
+        )
 
 
 class CinemaByMovie(generics.GenericAPIView):
@@ -191,7 +193,7 @@ class CinemaByMovie(generics.GenericAPIView):
                     )
                 )
                 if len(_shows) > 0:
-                    shows.append(_shows)
+                    shows.extend(_shows)
 
             _resp = dict(
                 cinema=dict(name=cinema["name"], address=cinema["address"]),
@@ -199,7 +201,7 @@ class CinemaByMovie(generics.GenericAPIView):
             )
             resp.append(_resp)
 
-        return Response(resp)
+        return Response(resp, status=status.HTTP_200_OK)
 
 
 def check_availability(showtime, seat_category=None):
@@ -253,10 +255,12 @@ class SeatAvailability(generics.RetrieveAPIView):
 
         available_seats = check_availability(showtime)
         if len(available_seats) != 0:
-            return Response({"Available Seats": available_seats})
+            return Response(
+                {"Available Seats": available_seats}, status=status.HTTP_200_OK
+            )
 
         return Response(
-            {"Error": "Seats are not available"},
+            {"Message": "Seats are not available"},
             status=status.HTTP_412_PRECONDITION_FAILED,
         )
 
@@ -279,7 +283,7 @@ class SeatBooking(generics.CreateAPIView):
                 status=status.HTTP_406_NOT_ACCEPTABLE,
             )
 
-        if available_seats[0]["available_seats"] - payload["seats"] < -1:
+        if available_seats[0]["available_seats"] - int(payload["seats"]) < -1:
             return Response(
                 {"Message": "Seats are not available"},
                 status=status.HTTP_406_NOT_ACCEPTABLE,
