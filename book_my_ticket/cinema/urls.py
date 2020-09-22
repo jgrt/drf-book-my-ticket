@@ -36,7 +36,7 @@ urlpatterns = [
     path("seat_category/", SeatCategoryList.as_view()),
     path("seat_category/<int:pk>/", SeatCategoryDetail.as_view()),
     path("showtime/", ShowtimeList.as_view()),
-    path("movies_by_city/", MoviesByCity.as_view()),
+    path("movies_by_city/", MoviesByCity.as_view(), name="movies_by_city"),
     path("cinema_by_movie/", CinemaByMovie.as_view()),
     re_path(
         r"^check_seat_availability/(?P<showtime_id>[0-9]+)/$",

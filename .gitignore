@@ -3,3 +3,4 @@
 /data/
 /**/migrations/
 /book_my_ticket/htmlcov/
+/book_my_ticket/.coverage
