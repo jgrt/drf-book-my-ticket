@@ -2,3 +2,4 @@
 /**/.env
 /data/
 /**/migrations/
+/book_my_ticket/htmlcov/

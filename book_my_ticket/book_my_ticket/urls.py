@@ -19,8 +19,8 @@ from rest_framework.schemas import get_schema_view
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-path(
+    path("admin/", admin.site.urls),
+    path(
         "openapi-schema",
         get_schema_view(
             title="Book Show Ticket App",  # Title of your app
@@ -38,7 +38,6 @@ path(
         ),
         name="swagger-ui",
     ),
-    path('auth/', include('auth_app.urls')),
-    path('api/v1/', include('cinema.urls')),
-    path('api/v1/', include('booking.urls'))
+    path("auth/", include("auth_app.urls")),
+    path("api/v1/", include("cinema.urls")),
 ]
