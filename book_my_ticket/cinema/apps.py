@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class CinemaConfig(AppConfig):
-    name = 'cinema'
+    name = "cinema"

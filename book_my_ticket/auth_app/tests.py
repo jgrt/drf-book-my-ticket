@@ -7,8 +7,16 @@ from rest_framework import status
 
 
 class RegistrationTestCase(APITestCase):
-
     def test_registration(self):
-        data = {"email": "xyz@xyz.com", 'first_name': "xyz", "last_name": "qwe", "password1": "xyzxyzxyz", "password2": "xyzxyzxyz"}
-        resp = self.client.post("/api/v1/rest-auth/registration/", data)
+        data = {
+            "email": "xyz@xyz.com",
+            "first_name": "xyz",
+            "last_name": "qwe",
+            "date_of_birth": "2020-09-21",
+            "password1": "xyzxyzxyz",
+            "password2": "xyzxyzxyz",
+        }
+        url = "/auth/rest-auth/registration/"
+        resp = self.client.post(url, data, format="json")
+        print(resp.data)
         self.assertEqual(resp.status_code, status.HTTP_201_CREATED)
