@@ -73,10 +73,10 @@ class CinemaViewTestCase(APITestCase):
         )
 
     def test_movies_in_city(self):
-        url = "/api/v1/movies_by_city/"
+        url = "/movies_by_city/"
         data = {
             "city": self.city.pk,
-            "start_date": "2020-09-22T20:19:18.151Z",
+            "start_date": "2020-09-23T20:19:18.151Z",
             "end_date": "2020-09-25T17:19:18.151Z",
         }
         response = self.client.post(url, data)
@@ -84,27 +84,28 @@ class CinemaViewTestCase(APITestCase):
         self.assertIsNotNone(response.data, "Must be empty list if no movies found")
 
     def test_movies_in_cinema(self):
-        url = "/api/v1/cinema_by_movie/"
+        url = "/cinema_by_movie/"
         data = {
             "city": self.city.pk,
             "movie": self.movie1.pk,
-            "start_date": "2020-09-22T20:19:18.151Z",
+            "start_date": "2020-09-23T20:19:18.151Z",
             "end_date": "2020-09-25T17:19:18.151Z",
         }
 
         response = self.client.post(url, data)
+        print(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIsNotNone(response.data, "Must be empty list if no cinema found")
 
     def test_seat_availability(self):
         showtime_id = self.showtime1.pk
-        url = f"/api/v1/check_seat_availability/{showtime_id}/"
+        url = f"/check_seat_availability/{showtime_id}/"
         response = self.client.get(url)
         self.assertIsNotNone(response.data)
 
     def test_seat_booking(self):
         self.client.force_login(user=self.user)
-        url = "/api/v1/book_seat/"
+        url = "/book_my_seat/"
         data = {
             "showtime_id": self.showtime1.pk,
             "seat_category": self.seat_category_1.pk,

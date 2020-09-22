@@ -14,7 +14,7 @@ class RegistrationTestCase(APITestCase):
             "password1": "xyzxyzxyz",
             "password2": "xyzxyzxyz",
         }
-        url = "/auth/rest-auth/registration/"
+        url = "/sign-up/rest-auth/registration/"
         response = self.client.post(url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
