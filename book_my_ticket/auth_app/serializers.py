@@ -28,10 +28,10 @@ class UserLoginSerializer(serializers.Serializer):
 
 class CustomRegisterSerializer(RegisterSerializer):
     username = None
-    first_name = serializers.CharField(required=False)
-    last_name = serializers.CharField(required=False)
-    date_of_birth = serializers.DateField(required=False)
-    city = serializers.CharField(required=False)
+    first_name = serializers.CharField(required=True)
+    last_name = serializers.CharField(required=True)
+    date_of_birth = serializers.DateField(required=True)
+    city = serializers.CharField(required=True)
 
     def custom_signup(self, request, user):
         user.first_name = self.validated_data.get("first_name", "")
