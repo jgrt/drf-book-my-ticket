@@ -12,8 +12,8 @@
 
 ### Features
 
-* Test Coverage - Included model and views tests using django [TestCase](https://docs.djangoproject.com/en/3.1/topics/testing/overview/#writing-tests) and DRF [APITestCase](https://www.django-rest-framework.org/api-guide/testing/#api-test-cases) respectively.
-* Swagger Docs - Out of the box API documentation using [drf-yasg](https://drf-yasg.readthedocs.io/en/stable/readme.html#features). 
+* Test Coverage - Included model and views tests using django [TestCase](https://docs.djangoproject.com/en/3.1/topics/testing/overview/#writing-tests) and DRF [APITestCase](https://www.django-rest-framework.org/api-guide/testing/#api-test-cases) respectively. [Test Coverage Report](https://bmt-coverage.s3.ap-south-1.amazonaws.com/index.html).
+* Swagger Docs - Out of the box API documentation using [drf-yasg](https://drf-yasg.readthedocs.io/en/stable/readme.html#features). Check out Swagger [here](http://13.126.163.78/swagger/).
 * Logging - Request/Response logging along with metadata to console.
 * Docker - Fully containerized application, provides python-alpine 3.8, DRF dependencies and PostgresSQL configured. [docker-compose](https://github.com/jgrt/drf-book-my-ticket/blob/master/docker-compose.yml) for local development.
 
