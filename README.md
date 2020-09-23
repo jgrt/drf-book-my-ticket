@@ -40,6 +40,7 @@ docker-compose exec web bash
 
 * then, run few more commands to migrate and sync to database
 ```
+$ python manage.py makemigrations
 $ python manage.py migrate
 $ python manage.py createsuperuser
 ```
