@@ -13,6 +13,7 @@ class RegistrationTestCase(APITestCase):
             "date_of_birth": "2020-09-21",
             "password1": "xyzxyzxyz",
             "password2": "xyzxyzxyz",
+            "city": "Auckland",
         }
         url = "/sign-up/rest-auth/registration/"
         response = self.client.post(url, data, format="json")

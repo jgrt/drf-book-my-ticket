@@ -28,39 +28,24 @@ $ git clone https://github.com/jgrt/drf-book-my-ticket.git
 * after cloning repo, run following commands to build and start services defined in [docker-compose.yml](https://github.com/jgrt/drf-book-my-ticket/blob/master/docker-compose.yml)
 ```
 $ docker-compose build
-$ docker-compose up db
+$ docker-compose up web
 ``` 
 
-* check db service is up and ready to accept connections, then start drf service
+If everything goes right you have running django app on port (default 80), visit at localhost
+
+To make migrations, you need to go inside docker web service
 ```
-$ docker-compose up drf
+docker-compose exec web bash
 ```
 
-If everything goes right you have running django app on port (default 80), visit at localhost:80
-
-* run few more commands to migrate and sync to database
+* then, run few more commands to migrate and sync to database
 ```
-$ python manage.py makemigrations
 $ python manage.py migrate
 $ python manage.py createsuperuser
 ```
 
 ##### Finally
-You can now access the swagger on your browser by using
+You can now access the swagger on your browser by using and test APIs,
 ```
 http://localhost/swagger/
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-  

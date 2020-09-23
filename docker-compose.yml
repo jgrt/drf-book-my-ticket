@@ -1,27 +1,32 @@
-version: '2.3'
+version: '2.4'
 
 services:
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./book_my_ticket:/usr/src/app
+    ports:
+      - "80:80"
+    entrypoint: "python manage.py runserver 0.0.0.0:80"
+    depends_on:
+      db:
+        condition: service_healthy
 
   db:
     image: library/postgres:latest
     env_file:
       - .env
-    environment:
-      PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./data:/var/lib/postgresql/data
+      - ./pgdata:/var/lib/postgresql/data
     ports:
     - "5432:5432"
+    healthcheck:
+      test: "exit 0"
 
-  drf:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    links:
-      - db
-    volumes:
-    - ./book_my_ticket:/usr/src/app
-    ports:
-    - "80:80"
-    entrypoint: 'python manage.py runserver 0.0.0.0:80'
+volumes:
+  pgdata:
+

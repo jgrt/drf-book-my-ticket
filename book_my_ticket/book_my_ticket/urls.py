@@ -22,7 +22,7 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Book My Show API", default_version="v1", description="Book My Show APIs",
+        title="Book My Ticket", default_version="v1", description="Book My Ticket APIs",
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
